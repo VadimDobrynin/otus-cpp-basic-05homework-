@@ -5,11 +5,7 @@ int main() {
     Mean mean;
     Min min;
     Max max;
-    std::cout << "Hello, World!" << std::endl;
-//    for(int i = 0; i < 11; i++){
-//        m.update(i);
-//    }
-//    std::cout << m.name() <<" "<<m.eval()<< std::endl;
+    std::cout << "statistics" << std::endl;
     double next = 0;
     do{
         std::cin >> next;
