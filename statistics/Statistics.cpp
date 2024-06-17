@@ -16,7 +16,12 @@ double Min::eval() const{
 }
 ///---------------------------------------------------------------------------------------------------------------------
 void Max::update(double next){
-    (max_val <= next) ? max_val = next : max_val;
+    if(count == 0){
+        count++;
+        max_val = next;
+    }else {
+        (max_val <= next) ? max_val = next : max_val;
+    }
 }
 const char* Max::name() const{
     return "Max";

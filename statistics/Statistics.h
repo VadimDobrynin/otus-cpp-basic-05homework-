@@ -17,16 +17,18 @@ public:
     const char* name() const override;
     double eval() const override;
 private:
+    size_t count;
     double min_val;
 };
 
 class Max : public IStatistics{
 public:
-    Max(): max_val{std::numeric_limits<double>::min()}{}
+    Max(): max_val{0}, count{0}{}
     void update(double next) override;
     const char* name() const override;
     double eval() const override;
 private:
+    size_t count;
     double max_val;
 };
 

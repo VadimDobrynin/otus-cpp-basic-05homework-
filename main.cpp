@@ -1,23 +1,26 @@
 #include <iostream>
 #include "statistics/Statistics.h"
 int main() {
-    Std std;
-    Mean mean;
-    Min min;
-    Max max;
+    size_t statistics_count = 4;
+    IStatistics* statistics[statistics_count];
+    statistics[0] = new Min;
+    statistics[1] = new Max;
+    statistics[2] = new Mean;
+    statistics[3] = new Std;
     std::cout << "statistics" << std::endl;
     double next = 0;
     do{
         std::cin >> next;
-        mean.update(next);
-        max.update(next);
-        min.update(next);
-        std.update(next);
+        for(auto item: statistics){
+            item->update(next);
+        }
     }while(std::cin.get() != EOF);
 
-    std::cout << mean.name() << " = " << mean.eval() <<std::endl;
-    std::cout << min.name() << " = " << min.eval() <<std::endl;
-    std::cout << max.name() << " = " << max.eval() <<std::endl;
-    std::cout << std.name() << " = " << std.eval() <<std::endl;
+    for(auto item : statistics){
+        std::cout << item->name() << " = " << item->eval() <<std::endl;
+    }
+    for(auto item: statistics){
+        delete item;
+    }
     return 0;
 }
